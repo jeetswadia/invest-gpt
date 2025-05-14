@@ -1,0 +1,1 @@
+📘 **Educational Use Only** – InvestGPT provides general information for learning purposes and does **not** offer personalized financial, legal, or tax advice. Past performance is not indicative of future results. Consult a licensed professional before making investment decisions.
