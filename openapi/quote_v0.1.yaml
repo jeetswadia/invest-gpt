@@ -1,0 +1,51 @@
+openapi: 3.0.1
+info:
+  title: InvestGPT • Alpha Vantage Quote API (stub)
+  version: 0.1.0
+servers:
+  - url: https://www.alphavantage.co
+paths:
+  /query:
+    get:
+      summary: Get the latest quote for a US equity symbol (GLOBAL_QUOTE)
+      parameters:
+        - name: function
+          in: query
+          required: true
+          description: Fixed Alpha Vantage function name
+          schema:
+            type: string
+            enum: [GLOBAL_QUOTE]          # keeps callers from changing it
+        - name: symbol
+          in: query
+          required: true
+          description: Ticker symbol (e.g., AAPL)
+          schema:
+            type: string
+      security:
+        - apiKeyQuery: []                # ?apikey=YOUR_API_KEY
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GlobalQuote'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: apikey
+  schemas:
+    GlobalQuote:
+      type: object
+      description: Partial schema for Alpha Vantage GLOBAL_QUOTE response
+      properties:
+        Global\ Quote:
+          type: object
+          properties:
+            01.\ symbol:           { type: string }
+            05.\ price:            { type: string }
+            07.\ latest\ trading\ day: { type: string }
+            10.\ change\ percent:  { type: string }
